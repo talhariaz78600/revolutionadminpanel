@@ -68,7 +68,7 @@ setaddproduct(find)
                 <div className="space-y-12 h-screen">
                     <div>
                         <h2 className="text-3xl mt-4 font-bold tracking-tight text-purple-900 sm:text-4xl">
-                            Add Product
+                        Update Product
                         </h2>
                         <div className="my-4 grid grid-cols-3 gap-x-6 gap-y-2 ">
                         <div className=" col-sapn-3 sm:col-span-1">

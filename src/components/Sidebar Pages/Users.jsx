@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { saveMiqatsToJSON } from "./createJson/createJson";
-
 import { selectUsers, updateUserStatus } from "../../StoreRedux/UserSlice";
 import {selectorders} from "../../StoreRedux/orderSlice"
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +8,8 @@ import DeleteModal from "../DeleteModal";
 import { toast } from "react-toastify";
 import { serverUrl } from "../../config";
 import axios from "axios";
-
-const Users = (props) => {
+import { Link } from "react-router-dom";
+const Users = () => {
   const [myusers, setmyusers] = useState([]);
   const [delId, setdelId] = useState(null);
   const [showModal, setshowModal] = useState(false);
@@ -19,6 +18,7 @@ const Users = (props) => {
   const storeAllOrders = useSelector(selectorders);
   const dispatch = useDispatch();
   useEffect(() => {
+    
     setmyusers(storeAllUsers);
     // console.log(storeAllUsers);
   }, [storeAllUsers, dispatch]);
@@ -148,12 +148,14 @@ const Users = (props) => {
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <Link to={`/Admin/orders/${user._id}`}>
                       <div className="relative inline-block cursor-pointer">
                         <i className="fa-solid fa-cart-shopping text-purple-900 text-[30px] cursor-pointer"></i>
                         <span className="absolute top-0 right-0 bg-red-500 text-white px-0.5 rounded-full  text-xs">
                         {storeAllOrders? storeAllOrders.filter((item)=>item.userId===user._id).length : "0"}
                         </span>
                       </div>
+                      </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button

@@ -42,8 +42,8 @@ export const ThemeRoutes = [
       { path: "editproduct/:productId", exact: true, element: <PrivateRouteAdmin element={<Editproduct/>} /> },
 
       { path: 'users', exact: true, element: <PrivateRouteAdmin element={<Users />} /> },
-      { path: 'orders', exact: true, element: <PrivateRouteAdmin element={<Orders />} /> },
-      { path: 'orders/:orderId', exact: true, element: <PrivateRouteAdmin element={<OrderDetailPage />} /> },
+      { path: 'orders/:userId', exact: true, element: <PrivateRouteAdmin element={<Orders />} /> },
+      { path: 'order/:orderId', exact: true, element: <PrivateRouteAdmin element={<OrderDetailPage />} /> },
 
       { path: "*", exact: true, element: <Error /> },
       // { path: "starter", exact: true, element: <Statistics /> },

@@ -297,7 +297,7 @@ export function Sidebar() {
 
  <li>
                             <Link
-                                to="/Admin/orders"
+                                to="/Admin/orders/allorders"
 
                                 className={classNames(location.pathname === '/Admin/orders' ? 'text-black bg-gray-200' : 'text-white', " flex items-center p-2 text-base font-medium  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:text-black group ")}
 

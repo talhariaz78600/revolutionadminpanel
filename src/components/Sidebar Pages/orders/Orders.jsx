@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "../../Loader/loader";
 import DeleteModal from "../../DeleteModal";
 import { toast } from "react-toastify";
+import {useParams} from "react-router-dom"
 import { serverUrl } from "../../../config";
 // import OrderList from "../../Websocket";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const Orders = (props) => {
+     const {userId}= useParams()
     const [myorders, setmyorders] = useState([]);
     const [delId, setdelId] = useState(null);
     const [showModal, setshowModal] = useState(false);
@@ -16,9 +18,14 @@ const Orders = (props) => {
     const storeAllOrders = useSelector(selectorders);
     const dispatch = useDispatch();
     useEffect(() => {
-        const data = [...storeAllOrders].reverse();
-        setmyorders(data);
-        console.log(data);
+        if(userId==="allorders"){
+            const data = [...storeAllOrders].reverse();
+            setmyorders(data);
+        }else{
+            const data=storeAllOrders.filter((item)=>item.userId===userId);
+            setmyorders(data);
+        }
+       // eslint-disable-next-line
     }, [storeAllOrders, dispatch]);
 
     const handleChange = async (status, id) => {
@@ -91,7 +98,7 @@ const Orders = (props) => {
                                     <tr key={index} className="text-center">
 
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-bold  curser-pointer text-purple-900">
-                                           <Link to={`/Admin/orders/${user._id}`}>{user.title}</Link> 
+                                           <Link to={`/Admin/order/${user._id}`}>{user.title}</Link> 
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {user.price}
