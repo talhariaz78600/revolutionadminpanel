@@ -121,10 +121,10 @@ const Users = () => {
                       {user.email}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {user.mobileNumber}
+                      {user.mobileNumber?user.mobileNumber:"---"}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {user.address}
+                      {user.address?user.address:"---"}
                     </td>
                     <td className=" font-medium text-gray-900">
                       <input
