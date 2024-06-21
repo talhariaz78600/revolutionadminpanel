@@ -311,6 +311,38 @@ export function Sidebar() {
                                 <span className="ml-3">Orders</span>
                             </Link>
                         </li>
+
+
+
+
+                        <li>
+                            <Link
+                                to="/Admin/admin"
+                                className={classNames(location.pathname === '/Admin/admin' ? 'text-black bg-gray-200' : 'text-white', " flex items-center p-2 text-base font-medium  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:text-black group ")}
+                            >
+                                <img
+                                    src="/profile.jpg"
+                                    alt="Authentication Icon"
+                                    className="flex-shrink-0 w-6 h-6"
+                                />
+                                <span className="ml-3">Create Admin</span>
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link
+                                to="/Admin/media"
+                                className={classNames(location.pathname === '/Admin/media' ? 'text-black bg-gray-200' : 'text-white', " flex items-center p-2 text-base font-medium  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:text-black group ")}
+                            >
+                                <img
+                                    src="/network.png"
+                                    alt="Authentication Icon"
+                                    className="flex-shrink-0 w-6 h-6"
+                                />
+                                <span className="ml-3">Social Media </span>
+                            </Link>
+                        </li>
+
                     </div>
                 </ul>
 

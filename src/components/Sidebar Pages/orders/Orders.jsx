@@ -73,16 +73,16 @@ const Orders = (props) => {
                         <thead className="bg-gray-50">
                             <tr>
                                 <th scope="col" className="px-3 py-3 text-center min-w-[150px] text-md font-bold uppercase tracking-wider">
-                                    Title
+                                    Order Id
                                 </th>
                                 <th scope="col" className="px-3 py-3 text-center min-w-[200px] text-md font-bold uppercase tracking-wider">
-                                    Price
+                                   Total Price
                                 </th>
                                 <th scope="col" className="px-3 py-3 text-center min-w-[150px] text-md font-bold uppercase tracking-wider">
                                     Date
                                 </th>
                                 <th scope="col" className="px-3 py-3 text-center min-w-[100px] text-md font-bold uppercase tracking-wider">
-                                    Update Status
+                                Payment Status
                                 </th>
                                 <th scope="col" className="px-3 py-3 text-center min-w-[100px] text-md font-bold uppercase tracking-wider">
                                     Status
@@ -98,7 +98,7 @@ const Orders = (props) => {
                                     <tr key={index} className="text-center">
 
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-bold  curser-pointer text-purple-900">
-                                           <Link to={`/Admin/order/${user._id}`}>{user.title}</Link> 
+                                           <Link to={`/Admin/order/${user._id}`}>{user.product[0].orderId}</Link> 
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {user.price}
