@@ -3,11 +3,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { serverUrl  } from "../../config";
 import { Loader } from "../Loader/loader";
-const NewAdmin = () => {
+import { useDispatch } from "react-redux";
+import {AddNewAdmin} from "../../StoreRedux/alladminSlice"
+import Alladmins from "../Sidebar Pages/alladmins/Alladmins"
+ const NewAdmin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setloading] = useState(false)
+  const dispatch=useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -23,9 +27,11 @@ const NewAdmin = () => {
         password,
       });
       if (response && response.status === 200) {
+        dispatch(AddNewAdmin(response.data.admin))
         console.log("success" , response)
         setloading(false);
         toast.success("Admin created successfully")
+
         setEmail("")
         setPassword("")
       }
@@ -44,6 +50,8 @@ const NewAdmin = () => {
   };
 
   return (
+    <div>
+
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleSubmit}
@@ -93,6 +101,8 @@ const NewAdmin = () => {
         </div>
       </form>
       <Loader loading={loading} />  
+    </div>
+      <Alladmins/>
     </div>
   );
 };

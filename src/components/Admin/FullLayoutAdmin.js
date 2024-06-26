@@ -9,7 +9,7 @@ import { useDispatch,useSelector} from "react-redux";
 import {
   Adduser, selectUsers
 } from "../../StoreRedux/UserSlice";
-
+import {Addalladmins} from "../../StoreRedux/alladminSlice"
 import { toast } from "react-toastify";
 import { Sidebar } from "../Sidebar Pages/SideBar";
 
@@ -19,6 +19,8 @@ export const AdminLayout = () => {
   const [loader, setloader] = useState(false);
   const dispatch = useDispatch();
   const storeAllUsers = useSelector(selectUsers);
+  // const alladmins=useSelector(selectalladmins);
+  // console.log(alladmins);
 
   // const storeAllUsers = useSelector(selectUsers);
   //////////////////////////////fetch total users/////////////////////////////////////////////
@@ -53,6 +55,41 @@ export const AdminLayout = () => {
       fetchUsers();
     }
   }, [dispatch, storeAllUsers]);
+
+
+  ///////////////////////////////////fetch all admins ///////////////////////////////
+
+  useEffect(() => {
+    const fetchAdmins = async () => {
+
+      try {
+        const response = await axios.get(
+          `${serverUrl}/api/admin/get_all_admins`
+        );
+        if (response && response.status === 200) {
+          setloader(false);
+          // console.log(response.data.users);
+          dispatch(Addalladmins(response.data.admins));
+          console.log(response.data.admins);
+        
+          toast.success("Admins Fetch Successfully");
+        }
+      } catch (error) {
+        setloader(false);
+        console.log(error);
+        if (error.response) {
+          toast.error("Failed to Fetch Admins");
+        } else {
+          toast.error("Failed to Fetch Admins");
+          console.log("Failed to fetch Admins")
+        }
+      }
+    };
+
+   
+      fetchAdmins();
+        // eslint-disable-next-line
+  }, []);
    /////////////////////////////fetch total foods////////////////////////////////////////////
     useEffect(() => {
       const fetchbooks = async () => {

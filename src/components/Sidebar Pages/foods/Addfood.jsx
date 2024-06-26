@@ -62,6 +62,9 @@ const Addfood = () => {
                 dispatch(AddNewfood(response.data.data))
                 console.log(response.data.data)
                 toast.success(response.data.message);
+                setEdu("")
+                setContent("")
+
                 // setaddbook(doorinitial);
             }
         }catch(error){

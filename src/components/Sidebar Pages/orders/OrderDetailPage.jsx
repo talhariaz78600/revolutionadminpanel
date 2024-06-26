@@ -39,18 +39,18 @@ function OrderDetailPage() {
               <div className="col-span-2 md:col-span-1  flex flex-col justify-center p-4">
                   <h3 className="text-2xl font-semibold text-purple-800">{book1.title}</h3>
                   <p className="text-sm text-gray-600 my-2">
-                      <span className="text-purple-600 font-bold">Price:</span> ${book1.price}
+                      <span className="text-purple-600 font-bold">Price:</span>${book1.price}
                   </p>
                   <p className="text-sm text-gray-600 my-2">
-                      <span className="text-purple-600 font-bold">Hosting Fee:</span> {book1.hostingfee}
+                      <span className="text-purple-600 font-bold">Hosting Fee:</span>{book1.hostingfee}
                   </p>
                   <p className="text-sm text-gray-600 my-2">
-                      <span className="text-purple-600 font-bold">Producttype:</span> {book1.producttype}
+                      <span className="text-purple-600 font-bold">Producttype:</span>{book1.producttype}
                   </p>
                   <p className="text-sm text-gray-600 my-2">
-                      <span className="text-purple-600 font-bold">Power :</span> {book1.power}
+                      <span className="text-purple-600 font-bold">Power :</span>{book1.power}
                       <p className="text-sm text-gray-600 my-2">
-                      <span className="text-purple-600 font-bold">No of Machines: </span> {book1.machines}
+                      <span className="text-purple-600 font-bold">No of Machines: </span>{book1.machines}
                     
                   </p>
                   </p>

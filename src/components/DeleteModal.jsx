@@ -9,6 +9,7 @@ import { deletefood} from "../StoreRedux/foodSlice";
 import {deleteorder} from "../StoreRedux/orderSlice";
 import {deleteproduct} from "../StoreRedux/productSlice";
 // import { useNavigate } from "react-router-dom";
+import {deleteAdmin} from "../StoreRedux/alladminSlice"
 
 
 const DeleteModal = (props) => {
@@ -47,6 +48,21 @@ const DeleteModal = (props) => {
           setloading(false);
         } else {
           toast.error("Failed to delete item");
+          setloading(false);
+
+        }
+      }
+      else if (props.whatdelete === "admin") {
+        const delResponse = await axios.delete(
+          `${serverUrl}/api/admin/${delId}/delete_admin`
+        );
+        if (delResponse.status === 200) {
+          dispatch(deleteAdmin(delId));
+          toast.success("Admin deleted successfully");
+          setloading(false);
+        }
+        else {
+          toast.error("Failed to delete Admin");
           setloading(false);
 
         }
