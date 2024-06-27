@@ -11,10 +11,10 @@ const Addproduct = () => {
     const host=useNavigate();
     const dispatch = useDispatch()
     const doorinitial = {
-        title:"", price:"",hostingfee:"",condition:"",image:"",power:"",machines:"",producttype:""
+        title:"", price:"",hostingfee:"",condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:""
     }
     const Doorerror = {
-        title:"", price:"",hostingfee:"" ,condition:"",image:"",power:"",machines:"",producttype:""
+        title:"", price:"",hostingfee:"" ,condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:""
     }
     const [error, setError] = useState(Doorerror);
     const [addproduct, setaddproduct] = useState(doorinitial);
@@ -66,7 +66,7 @@ const Addproduct = () => {
             const img= await imageCompression(addproduct.image,options)
              const data=await handleImageSelect(img)
             const response = await axios.post(`${serverUrl}/api/product/createProduct`, {
-                title:addproduct.title, price:parseInt(addproduct.price),hostingfee:parseInt(addproduct.hostingfee),condition:addproduct.condition,imageUrl:data,power:addproduct.power,machines:addproduct.machines,producttype:addproduct.producttype
+                title:addproduct.title, price:parseInt(addproduct.price),hostingfee:parseInt(addproduct.hostingfee),condition:addproduct.condition,imageUrl:data,power:addproduct.power,machines:addproduct.machines,producttype:addproduct.producttype,installation:parseInt(addproduct.installation),monthlysupport:parseInt(addproduct.monthlysupport),
             });
             console.log(response)
             if (response && response.status === 200) {
@@ -165,6 +165,54 @@ const Addproduct = () => {
                                         className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
                                     />
                                     {error.hostingfee && <p className="text-red-700 text-sm font-normal">{error.hostingfee}</p>}
+                                </div>
+                            </div>
+                            <div className="col-sapn-3 sm:col-span-1">
+                                <label htmlFor="monthlysupport" className="block text-md font-medium leading-6 text-purple-900">
+                                    Monthly Support
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={addproduct.monthlysupport}
+                                        name="monthlysupport"
+                                        onChange={handleChangeInput}
+                                        type="number"
+                                        placeholder="0"
+                                        className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                                    />
+                                    {error.monthlysupport && <p className="text-red-700 text-sm font-normal">{error.monthlysupport}</p>}
+                                </div>
+                            </div>
+                            <div className="col-sapn-3 sm:col-span-1">
+                                <label htmlFor="installation" className="block text-md font-medium leading-6 text-purple-900">
+                                Setup and Installation
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={addproduct.installation}
+                                        name="installation"
+                                        onChange={handleChangeInput}
+                                        type="number"
+                                        placeholder="0"
+                                        className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                                    />
+                                    {error.installation && <p className="text-red-700 text-sm font-normal">{error.installation}</p>}
+                                </div>
+                            </div>
+                            <div className="col-sapn-3 sm:col-span-1">
+                                <label htmlFor="installation" className="block text-md font-medium leading-6 text-purple-900">
+                                Deposit
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={addproduct.deposit}
+                                        name="deposit"
+                                        onChange={handleChangeInput}
+                                        type="number"
+                                        placeholder="0"
+                                        className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                                    />
+                                    {error.deposit && <p className="text-red-700 text-sm font-normal">{error.deposit}</p>}
                                 </div>
                             </div>
                             <div className="col-sapn-3 sm:col-span-1">

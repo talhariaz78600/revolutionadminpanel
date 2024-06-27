@@ -32,7 +32,16 @@ function Productdetailpage() {
                             <span className="text-purple-600 font-bold">Price:</span> ${book.price}
                         </p>
                         <p className="text-sm text-gray-600 my-2">
-                            <span className="text-purple-600 font-bold">Hosting Fee:</span> {book.hostingfee}
+                            <span className="text-purple-600 font-bold">Hosting Fee:</span> ${book.hostingfee}
+                        </p>
+                        <p className="text-sm text-gray-600 my-2">
+                            <span className="text-purple-600 font-bold">Monthly Support</span> ${book.monthlysupport}
+                        </p>
+                        <p className="text-sm text-gray-600 my-2">
+                            <span className="text-purple-600 font-bold"> Setup and Installation</span> ${book.installation}
+                        </p>
+                        <p className="text-sm text-gray-600 my-2">
+                            <span className="text-purple-600 font-bold">Deposit</span> ${book.deposit}
                         </p>
                         <p className="text-sm text-gray-600 my-2">
                             <span className="text-purple-600 font-bold">Producttype:</span> {book.producttype}

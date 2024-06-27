@@ -10,6 +10,8 @@ const SocialMedia = () => {
   const [facebookUrl, setFacebookUrl] = useState('');
   const [instagramUrl, setInstagramUrl] = useState('');
   const [telegramUrl, setTelegramUrl] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobileno, setMobile] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async(e) => {
@@ -27,14 +29,17 @@ const SocialMedia = () => {
             twitterUrl,
             facebookUrl,
             instagramUrl,
-            telegramUrl
+            telegramUrl,
+            email,
+            mobileno
           });
         if (response && response.status === 200) {
           console.log("success" , response)
           setTwitterUrl(response.data.data.twitterUrl)
           setFacebookUrl(response.data.data.facebookUrl)
           setInstagramUrl(response.data.data.instagramUrl)
-          
+          setEmail(response.data.data.email)
+          setMobile(response.data.data.mobileno)
           setTelegramUrl(response.data.data.telegramUrl)
           toast.success("Successfully updated")
           setloading(false);
@@ -61,8 +66,8 @@ const SocialMedia = () => {
           setTwitterUrl(response.data.data.twitterUrl)
           setFacebookUrl(response.data.data.facebookUrl)
           setInstagramUrl(response.data.data.instagramUrl)
-          
-          setTelegramUrl(response.data.data.telegramUrl)
+          setEmail(response.data.data.email)
+          setMobile(response.data.data.mobileno)
         }
       } catch (error) {
         
@@ -147,6 +152,35 @@ const SocialMedia = () => {
             placeholder="Enter Telegram URL"
           />
         </div>
+
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telegram">
+            Email
+          </label>
+          <input
+            id="telegram"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter Email"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telegram">
+            Mobile No
+          </label>
+          <input
+            id="telegram"
+            type="text"
+            value={mobileno}
+            onChange={(e) => setMobile(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter Mobile No"
+          />
+        </div>
+
         <div className="flex items-center justify-between">
           <button
             type="submit"
