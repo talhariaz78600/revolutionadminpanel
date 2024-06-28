@@ -8,7 +8,7 @@ const SubscribersList = () => {
 
   return (
     <div className="max-w-2xl mx-auto my-8">
-      <h2 className="text-2xl font-bold mb-6">Subscribers</h2>
+    {subscribers&&  <h2 className="text-2xl font-bold mb-6">Subscribers {subscribers.length}</h2>}
     {subscribers&&<div className="bg-white shadow-md rounded-lg p-6">
         <ul>
           {subscribers.map(subscriber => (
