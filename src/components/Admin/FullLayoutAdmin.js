@@ -15,6 +15,7 @@ import { Sidebar } from "../Sidebar Pages/SideBar";
 
 import { Addfood } from "../../StoreRedux/foodSlice";
 import { Addproduct } from "../../StoreRedux/productSlice";
+import {Addsuscribe }from "../../StoreRedux/suscribeSlice";
 export const AdminLayout = () => {
   const [loader, setloader] = useState(false);
   const dispatch = useDispatch();
@@ -181,6 +182,34 @@ useEffect(() => {
     return () => clearInterval(intervalId);
     // eslint-disable-next-line
   }, [serverUrl, dispatch]);
+
+
+  
+  ///////////////////////////////fetch total suscribers////////////////////////////////////////////
+  useEffect(() => {
+    const fetchSus = async () => {
+      try {
+        const response = await axios.get(`${serverUrl}/api/suscriber/getSuscribedata`);
+        if (response && response.status === 200) {
+          setloader(false);
+          dispatch(Addsuscribe(response.data.finddata));
+           toast.success("Suscribers fetched successfully");
+        }
+      } catch (error) {
+        setloader(false);
+        console.log(error);
+        if (error.response) {
+           toast.error("Failed to fetch Suscribers");
+        } else {
+           toast.error("Failed to fetch Suscribers");
+          console.log("Failed to fetch Suscribers");
+        }
+      }
+    };
+
+    fetchSus(); // Call fetchOrders initially
+      // eslint-disable-next-line
+  }, []);
  
   return (
     <>

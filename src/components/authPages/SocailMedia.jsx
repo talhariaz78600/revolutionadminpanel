@@ -66,6 +66,7 @@ const SocialMedia = () => {
           setTwitterUrl(response.data.data.twitterUrl)
           setFacebookUrl(response.data.data.facebookUrl)
           setInstagramUrl(response.data.data.instagramUrl)
+          setTelegramUrl(response.data.data.telegramUrl)
           setEmail(response.data.data.email)
           setMobile(response.data.data.mobileno)
         }

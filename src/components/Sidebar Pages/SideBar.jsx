@@ -342,6 +342,19 @@ export function Sidebar() {
                                 <span className="ml-3">Social Media </span>
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to="/Admin/suscriber"
+                                className={classNames(location.pathname === '/Admin/suscriber' ? 'text-black bg-gray-200' : 'text-white', " flex items-center p-2 text-base font-medium  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-200 hover:text-black group ")}
+                            >
+                                <img
+                                    src="/suscriber.png"
+                                    alt="Authentication Icon"
+                                    className="flex-shrink-0 w-6 h-6"
+                                />
+                                <span className="ml-3">Suscribers</span>
+                            </Link>
+                        </li>
 
                     </div>
                 </ul>
