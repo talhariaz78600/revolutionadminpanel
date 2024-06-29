@@ -16,6 +16,7 @@ import { Sidebar } from "../Sidebar Pages/SideBar";
 import { Addfood } from "../../StoreRedux/foodSlice";
 import { Addproduct } from "../../StoreRedux/productSlice";
 import {Addsuscribe }from "../../StoreRedux/suscribeSlice";
+import {Addmessage }from "../../StoreRedux/messageSlice";
 export const AdminLayout = () => {
   const [loader, setloader] = useState(false);
   const dispatch = useDispatch();
@@ -203,6 +204,32 @@ useEffect(() => {
         } else {
            toast.error("Failed to fetch Suscribers");
           console.log("Failed to fetch Suscribers");
+        }
+      }
+    };
+
+    fetchSus(); // Call fetchOrders initially
+      // eslint-disable-next-line
+  }, []);
+
+  ///////////////////////////////fetch total s////////messages////////////////////////////////////
+  useEffect(() => {
+    const fetchSus = async () => {
+      try {
+        const response = await axios.get(`${serverUrl}/api/contact/getcontactdata`);
+        if (response && response.status === 200) {
+          setloader(false);
+          dispatch(Addmessage(response.data.finddata));
+           toast.success("Messages fetched successfully");
+        }
+      } catch (error) {
+        setloader(false);
+        console.log(error);
+        if (error.response) {
+           toast.error("Failed to fetch Messages");
+        } else {
+           toast.error("Failed to fetch Messages");
+          console.log("Failed to fetch Messages");
         }
       }
     };

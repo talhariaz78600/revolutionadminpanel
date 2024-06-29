@@ -18,6 +18,7 @@ import OrderDetailPage from "../Sidebar Pages/orders/OrderDetailPage";
 import NewAdmin from "../authPages/NewAdmin";
 import SocailMedia from "../authPages/SocailMedia"
 import Suscriber from "../Sidebar Pages/suscriber/Suscriber"
+import Message from "../Sidebar Pages/Message"
 export const ThemeRoutes = [
   {
     path: "/",
@@ -39,6 +40,7 @@ export const ThemeRoutes = [
       { path: 'users', exact: true, element: <PrivateRouteAdmin element={<Users />} /> },
       { path: 'admin', exact: true, element: <PrivateRouteAdmin element={<NewAdmin />} /> },
       { path: 'media', exact: true, element: <PrivateRouteAdmin element={<SocailMedia />} /> },
+      {path: 'message', exact: true, element: <PrivateRouteAdmin element={<Message />} /> },
       { path: 'suscriber', exact: true, element: <PrivateRouteAdmin element={<Suscriber />} /> },
       { path: 'orders/:userId', exact: true, element: <PrivateRouteAdmin element={<Orders />} /> },
       { path: 'order/:orderId', exact: true, element: <PrivateRouteAdmin element={<OrderDetailPage />} /> },

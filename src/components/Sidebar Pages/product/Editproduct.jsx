@@ -13,7 +13,7 @@ const EditProduct = () => {
     const dispatch = useDispatch()
     const products = useSelector(selectproducts)
     const Doorerror = {
-        title: "", price: "", hostingfee: "", condition: "", power: "", machines: "", producttype: "",monthlysupport:"",installation:""
+        title: "", price: "", hostingfee: "", condition: "", power: "", machines: "", producttype: "",monthlysupport:"",installation:"",date:""
     }
     const [error, setError] = useState(Doorerror);
     const [addproduct, setaddproduct] = useState();
@@ -40,7 +40,7 @@ const EditProduct = () => {
         try {
             setloading(true);
             const response = await axios.put(`${serverUrl}/api/product/updateProduct/${productId}`, {
-                title: addproduct.title, price: parseInt(addproduct.price), hostingfee: parseInt(addproduct.hostingfee), condition: addproduct.condition, power: addproduct.power, machines: addproduct.machines, producttype: addproduct.producttype,installation:parseInt(addproduct.installation),monthlysupport:parseInt(addproduct.monthlysupport),deposit:parseInt(addproduct.deposit)
+                title: addproduct.title, price: parseInt(addproduct.price), hostingfee: parseInt(addproduct.hostingfee), condition: addproduct.condition, power: addproduct.power, machines: addproduct.machines, producttype: addproduct.producttype,installation:parseInt(addproduct.installation),monthlysupport:parseInt(addproduct.monthlysupport),deposit:parseInt(addproduct.deposit),date:addproduct.date
             });
             console.log(response)
             if (response && response.status === 200) {
@@ -235,6 +235,22 @@ const EditProduct = () => {
                                         {error.power && <p className="text-red-700 text-sm font-normal">{error.power}</p>}
                                     </div>
                                 </div>
+                                <div className="col-sapn-3 sm:col-span-1">
+                                <label htmlFor="itemPrice" className="block text-md font-medium leading-6 text-purple-900">
+                                Online Date
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={addproduct.date}
+                                        name="date"
+                                        onChange={handleChangeInput}
+                                        type="date"
+                                       
+                                        className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                                    />
+                                    {error.date && <p className="text-red-700 text-sm font-normal">{error.date}</p>}
+                                </div>
+                            </div>
 
                             </div>
 

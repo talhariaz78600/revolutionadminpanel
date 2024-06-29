@@ -12,6 +12,8 @@ const SocialMedia = () => {
   const [telegramUrl, setTelegramUrl] = useState('');
   const [email, setEmail] = useState('');
   const [mobileno, setMobile] = useState('');
+  const [open, setOpen] = useState('');
+  const [close, setClose] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async(e) => {
@@ -31,7 +33,9 @@ const SocialMedia = () => {
             instagramUrl,
             telegramUrl,
             email,
-            mobileno
+            mobileno,
+            open,
+            close
           });
         if (response && response.status === 200) {
           console.log("success" , response)
@@ -41,6 +45,8 @@ const SocialMedia = () => {
           setEmail(response.data.data.email)
           setMobile(response.data.data.mobileno)
           setTelegramUrl(response.data.data.telegramUrl)
+          setOpen(response.data.data.open)
+          setClose(response.data.data.close)
           toast.success("Successfully updated")
           setloading(false);
         }
@@ -69,6 +75,8 @@ const SocialMedia = () => {
           setTelegramUrl(response.data.data.telegramUrl)
           setEmail(response.data.data.email)
           setMobile(response.data.data.mobileno)
+          setOpen(response.data.data.open)
+          setClose(response.data.data.close)
         }
       } catch (error) {
         
@@ -179,6 +187,34 @@ const SocialMedia = () => {
             onChange={(e) => setMobile(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter Mobile No"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telegram">
+            Open
+          </label>
+          <input
+            id="open"
+            type="text"
+            value={open}
+            onChange={(e) => setOpen(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter Opening days of week"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="telegram">
+            Close
+          </label>
+          <input
+            id="close"
+            type="text"
+            value={close}
+            onChange={(e) => setClose(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter Closing days of week"
           />
         </div>
 

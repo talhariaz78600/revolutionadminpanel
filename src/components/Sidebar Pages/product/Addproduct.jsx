@@ -11,10 +11,10 @@ const Addproduct = () => {
     const host=useNavigate();
     const dispatch = useDispatch()
     const doorinitial = {
-        title:"", price:"",hostingfee:"",condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:""
+        title:"", price:"",hostingfee:"",condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:"",date:""
     }
     const Doorerror = {
-        title:"", price:"",hostingfee:"" ,condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:""
+        title:"", price:"",hostingfee:"" ,condition:"",image:"",power:"",machines:"",producttype:"",monthlysupport:"",installation:"",deposit:"",date:""
     }
     const [error, setError] = useState(Doorerror);
     const [addproduct, setaddproduct] = useState(doorinitial);
@@ -66,7 +66,7 @@ const Addproduct = () => {
             const img= await imageCompression(addproduct.image,options)
              const data=await handleImageSelect(img)
             const response = await axios.post(`${serverUrl}/api/product/createProduct`, {
-                title:addproduct.title, price:parseInt(addproduct.price),hostingfee:parseInt(addproduct.hostingfee),condition:addproduct.condition,imageUrl:data,power:addproduct.power,machines:addproduct.machines,producttype:addproduct.producttype,installation:parseInt(addproduct.installation),monthlysupport:parseInt(addproduct.monthlysupport),
+                title:addproduct.title, price:parseInt(addproduct.price),hostingfee:parseInt(addproduct.hostingfee),condition:addproduct.condition,imageUrl:data,power:addproduct.power,machines:addproduct.machines,producttype:addproduct.producttype,installation:parseInt(addproduct.installation),monthlysupport:parseInt(addproduct.monthlysupport),date:addproduct.date
             });
             console.log(response)
             if (response && response.status === 200) {
@@ -263,7 +263,22 @@ const Addproduct = () => {
                                     {error.power && <p className="text-red-700 text-sm font-normal">{error.power}</p>}
                                 </div>
                             </div>
-
+                            <div className="col-sapn-3 sm:col-span-1">
+                                <label htmlFor="itemPrice" className="block text-md font-medium leading-6 text-purple-900">
+                                Online Date
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={addproduct.date}
+                                        name="date"
+                                        onChange={handleChangeInput}
+                                        type="date"
+                                       
+                                        className="block w-full rounded-md border-0 py-1.5 text-purple-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                                    />
+                                    {error.date && <p className="text-red-700 text-sm font-normal">{error.date}</p>}
+                                </div>
+                            </div>
                         </div>
 
                     </div>
